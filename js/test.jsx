@@ -8,23 +8,23 @@ class Hello extends React.Component {
 
         this.state = {
             iconName: 'lock open',
-            isDisabled: 'enabled'
+            isDisabled: ''
         }
     }
 
     render(){
         return (
             <div>
-                <h2>{this.state.iconName}</h2>
-                <h2>{this.state.isDisabled}</h2>
+                <h3>{this.state.iconName}</h3>
+                <h3>{this.state.isDisabled}</h3>
 
-                <Input icon={<Icon name={this.state.iconName} link
+                <Input disabled={this.state.isDisabled}
+
+                       icon={<Icon name={this.state.iconName} link
                                    onClick={()=> {
                                         this.setState({
-                                            iconName: this.state.iconName === 'lock open' ? 'lock' : 'lock open'
-                                        })
-                                        this.setState({
-                                            isDisabled: this.state.isDisabled === 'enabled' ? 'disabled' : 'enabled'
+                                            iconName: this.state.iconName === 'lock open' ? 'lock' : 'lock open',
+                                            isDisabled: this.state.isDisabled === '' ? 'disabled' : ''
                                         })
 
                                    }}
