@@ -46,7 +46,7 @@ class InputDisable extends React.Component {
 
     handleChange3 = (e) => {
         this.setState({
-            num2: e.currentTarget.value
+            num3: e.currentTarget.value
         })
     }
 
@@ -78,12 +78,11 @@ class InputDisable extends React.Component {
                 
                 <Input name='first'
                        onChange={this.handleChange1} value={this.state.num1}
-                       disabled={this.state.disabled === 'first' ? 'disabled' : ''}
+                       disabled={this.state.disabled === 'first'}
                        icon={<Icon name={this.state.locked === 'first' ? 'lock' : 'unlock'} link
                                    onClick={() => {
                                        this.setState({
-                                           locked: 'first',
-                                           disabled: 'first'
+                                           locked: 'first'
                                        })
 
                                    }}
@@ -95,12 +94,11 @@ class InputDisable extends React.Component {
 
                 <Input name='second'
                        onChange={this.handleChange2} value={this.state.num2}
-                       disabled={this.state.disabled === 'second' ? 'disabled' : ''}
+                       disabled={this.state.disabled === 'second'}
                        icon={<Icon name={this.state.locked === 'second' ? 'lock' : 'unlock'} link
                                    onClick={() => {
                                        this.setState({
-                                           locked: 'second',
-                                           disabled: 'second'
+                                           locked: 'second'
                                        })
 
                                    }}
@@ -112,12 +110,11 @@ class InputDisable extends React.Component {
 
                 <Input name='third'
                        onChange={this.handleChange3}
-                       disabled={this.state.disabled === 'third' ? 'disabled' : ''}
+                       disabled={this.state.disabled === 'third'}
                        icon={<Icon name={this.state.locked === 'third' ? 'lock' : 'unlock'} link
                                    onClick={() => {
                                        this.setState({
-                                           locked: 'third',
-                                           disabled: 'third'
+                                           locked: 'third'
                                        })
 
                                    }}
@@ -129,7 +126,11 @@ class InputDisable extends React.Component {
 
                 <center>
 
-                    <Button style={{color: 'red'}}>Click Here</Button>
+                    <Button style={{color: 'red'}}
+
+                            onClick={()=>console.log('click')}
+
+                    >Click Here</Button>
 
 
                     <br /><br />
