@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Icon, Input, Dropdown, Button, Menu} from 'semantic-ui-react';
+import {
+    Icon,
+    Input,
+    Dropdown,
+    Button,
+    Menu
+} from 'semantic-ui-react';
 import '../css/style.css';
 
-class Test extends React.Component {
+class Table extends React.Component {
     constructor(props) {
         super(props);
-            this.state = {
-                activeItem: '',
-                cryptoCurrency: 'BTC'
-            }
+        this.state = {
+            activeItem: '',
+            cryptoCurrency: 'BTC'
+        }
 
     }
 
@@ -82,8 +86,7 @@ class Test extends React.Component {
 
 document.addEventListener('DOMContentLoaded', function(){
     ReactDOM.render(
-        //<Hello name={'Name'}/>,
-        <Test />,
+        <Table />,
         document.getElementById('app')
     );
 });
