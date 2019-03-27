@@ -21,7 +21,7 @@ class Test extends React.Component {
         })
     }
 
-    handleSelectChange(value) {
+    handleSelectChange(e, value) {
         console.log(value)
         this.setState({
             cryptoCurrency: value.value
@@ -42,19 +42,22 @@ class Test extends React.Component {
                     <Menu.Menu position='left'>
                         <Menu.Item>
                             <Dropdown
-                                placeholder='Select...'
+                                value={this.state.cryptoCurrency}
                                 icon='search'
                                 search
                                 selection
                                 options={options}
-                                onChange={this.state.handleSelectChange}
+                                onChange={this.handleSelectChange.bind(this)}
                             />
                         </Menu.Item>
 
                     </Menu.Menu>
 
 
-                    <Menu.Item name='PLN' active={this.state.activeItem === 'PLN'} onClick={this.handleItemClick} />
+                    <Menu.Item
+                        name='PLN'
+                        active={this.state.activeItem === 'PLN'}
+                        onClick={this.handleItemClick} />
                     <Menu.Item
                         name='USD'
                         active={this.state.activeItem === 'USD'}

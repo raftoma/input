@@ -28,7 +28,7 @@ class Table extends React.Component {
         console.log(value)
         this.setState({
             cryptoCurrency: value.value
-        });
+        })
     }
 
     render(){
