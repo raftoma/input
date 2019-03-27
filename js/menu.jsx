@@ -8,28 +8,27 @@ import '../css/style.css';
 class Test extends React.Component {
     constructor(props) {
         super(props);
-            this.state = {
-                activeItem: '',
-                cryptoCurrency: 'BTC'
-            }
-
+        this.state = {
+            activeItem: 'PLN',
+            cryptoCurrency: 'BTC'
+        }
     }
 
-    handleItemClick = (e, { name }) =>
+    handleItemClick = (e, { name }) => {
+        console.log("name", name)
         this.setState({
             activeItem: name
         })
+    }
 
-    handleSelectChange(e, value) {
+    handleSelectChange(value) {
         console.log(value)
         this.setState({
             cryptoCurrency: value.value
-        });
+        })
     }
 
     render(){
-
-        const { activeItem } = this.state
         const options = [
             { key: 'btc', text: 'Bitcoin [BTC]', value: 'BTC' },
             { key: 'ethereum', text: 'Ethereum [ETH]', value: 'ETH' },
@@ -39,7 +38,6 @@ class Test extends React.Component {
         return (
             <div>
                 <br />
-
                 <Menu secondary>
                     <Menu.Menu position='left'>
                         <Menu.Item>
@@ -56,15 +54,15 @@ class Test extends React.Component {
                     </Menu.Menu>
 
 
-                    <Menu.Item name='PLN' active={activeItem === 'PLN'} onClick={this.handleItemClick} />
+                    <Menu.Item name='PLN' active={this.state.activeItem === 'PLN'} onClick={this.handleItemClick} />
                     <Menu.Item
                         name='USD'
-                        active={activeItem === 'USD'}
+                        active={this.state.activeItem === 'USD'}
                         onClick={this.handleItemClick}
                     />
                     <Menu.Item
                         name='EUR'
-                        active={activeItem === 'EUR'}
+                        active={this.state.activeItem === 'EUR'}
                         onClick={this.handleItemClick}
                     />
 
@@ -82,7 +80,6 @@ class Test extends React.Component {
 
 document.addEventListener('DOMContentLoaded', function(){
     ReactDOM.render(
-        //<Hello name={'Name'}/>,
         <Test />,
         document.getElementById('app')
     );
