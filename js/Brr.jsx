@@ -6,7 +6,6 @@ export default class Brr extends React.Component {
         super(props);
     }
 
-
     render() {
         console.log(this.props);
         const lorem = 'Lorem ipsum dolor sit amet.';

@@ -81,7 +81,6 @@ class Test extends React.Component {
                     interval="D"
                 />
 
-
             </div>
         )
     }
