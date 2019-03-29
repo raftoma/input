@@ -9,7 +9,7 @@ class InputDisable extends React.Component {
 
         this.state = {
             iconName: 'balance scale',
-            locked: '',
+            locked: 'third',
             num1: '',
             num2: '',
             num3: ''

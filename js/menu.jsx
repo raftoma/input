@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Icon, Input, Dropdown, Button, Menu} from 'semantic-ui-react';
 import '../css/style.css';
+import { RealTimeChartWidget } from 'react-tradingview-widgets';
 
 class Test extends React.Component {
     constructor(props) {
@@ -73,6 +74,12 @@ class Test extends React.Component {
 
                 <h3>{this.state.activeItem}</h3>
                 <h3>{this.state.cryptoCurrency}</h3>
+
+                <RealTimeChartWidget
+                    symbol="BITFINEX:BTCUSD"
+                    locale="en"
+                    interval="D"
+                />
 
 
             </div>
