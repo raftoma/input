@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Icon, Input, Dropdown, Button} from 'semantic-ui-react';
 import '../css/style.css';
 import { RealTimeChartWidget } from 'react-tradingview-widgets';
+import {Helmet} from 'react-helmet';
 
 class Chart extends React.Component {
     constructor(props) {
@@ -21,25 +22,6 @@ class Chart extends React.Component {
     }
 
     render(){
-
-
-
-
-        const options = [
-            { key: 'abacki', text: 'Abacki', value: 'abacki' },
-            { key: 'babacki', text: 'Babacki', value: 'babacki' },
-            { key: 'cabacki', text: 'Cabacki', value: 'cabacki' },
-            { key: 'dabacki', text: 'Dabacki', value: 'dabacki' },
-            { key: 'fabacki', text: 'Fabacki', value: 'fabacki' },
-            { key: 'gabacki', text: 'Gabacki', value: 'gabacki' },
-            { key: 'habacki', text: 'Habacki', value: 'habacki' },
-            { key: 'jabacki', text: 'Jabacki', value: 'jabacki' },
-            { key: 'kabacki', text: 'Kabacki', value: 'kabacki' },
-            { key: 'labacki', text: 'Labacki', value: 'labacki' },
-            { key: 'mabacki', text: 'Mabacki', value: 'mabacki' },
-        ]
-
-
         return (
             <div>
                 <h1>Wykres Tradingview</h1>
@@ -50,6 +32,7 @@ class Chart extends React.Component {
                     locale="en"
                     interval="D"
                 />
+
 
             </div>
         )

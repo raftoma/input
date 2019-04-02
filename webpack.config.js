@@ -10,7 +10,7 @@ module.exports = {
   watch: true,
   mode: 'development',
   entry: {
-    main: path.join(__dirname, 'js', 'test.jsx')
+    main: path.join(__dirname, 'js', 'apexcharts_bak.jsx')
   },
   output: {
     path: path.join(__dirname, 'dist'),
