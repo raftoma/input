@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Icon, Input, Dropdown, Button} from 'semantic-ui-react';
 import '../css/style.css';
-import Chart from 'react-apexcharts';
+import ReactApexChart from 'react-apexcharts';
 
 class App extends React.Component {
     constructor(props) {
