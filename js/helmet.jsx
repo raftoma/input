@@ -7,43 +7,43 @@ import {Helmet} from "react-helmet";
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            num1: ''
+    this.state = {
+      num1: ''
 
-        }
     }
+  }
 
-    handleChange = (e) => {
-        this.setState({
-            num1: e.currentTarget.value
-        })
-    }
+  handleChange = (e) => {
+    this.setState({
+      num1: e.currentTarget.value
+    })
+  }
 
-    render(){
-        return (
-            <div>
-                <h1>Wykres Tradingview</h1>
-                <br />
+  render(){
+    return (
+      <div>
+        <h1>Wykres Tradingview</h1>
+        <br />
 
-                <RealTimeChartWidget
-                    symbol="BITFINEX:BTCUSD"
-                    locale="en"
-                    interval="D"
-                />
+        <RealTimeChartWidget
+          symbol="BITFINEX:BTCUSD"
+          locale="en"
+          interval="D"
+        />
 
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    ReactDOM.render(
-        <App />,
-        document.getElementById('app')
-    );
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
 });

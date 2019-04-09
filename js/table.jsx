@@ -1,92 +1,92 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-    Icon,
-    Input,
-    Dropdown,
-    Button,
-    Menu
+  Icon,
+  Input,
+  Dropdown,
+  Button,
+  Menu
 } from 'semantic-ui-react';
 import '../css/style.css';
 
 class Table extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeItem: '',
-            cryptoCurrency: 'BTC'
-        }
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeItem: '',
+      cryptoCurrency: 'BTC'
     }
 
-    handleItemClick = (e, { name }) =>
-        this.setState({
-            activeItem: name
-        })
+  }
 
-    handleSelectChange(e, value) {
-        console.log(value)
-        this.setState({
-            cryptoCurrency: value.value
-        })
-    }
+  handleItemClick = (e, { name }) =>
+    this.setState({
+      activeItem: name
+    })
 
-    render(){
+  handleSelectChange(e, value) {
+    console.log(value)
+    this.setState({
+      cryptoCurrency: value.value
+    })
+  }
 
-        const { activeItem } = this.state
-        const options = [
-            { key: 'btc', text: 'Bitcoin [BTC]', value: 'BTC' },
-            { key: 'ethereum', text: 'Ethereum [ETH]', value: 'ETH' },
-            { key: 'ripple', text: 'Ripple [XRP]', value: 'XRP' },
-        ]
+  render(){
 
-        return (
-            <div>
-                <br />
+    const { activeItem } = this.state
+    const options = [
+      { key: 'btc', text: 'Bitcoin [BTC]', value: 'BTC' },
+      { key: 'ethereum', text: 'Ethereum [ETH]', value: 'ETH' },
+      { key: 'ripple', text: 'Ripple [XRP]', value: 'XRP' },
+    ]
 
-                <Menu secondary>
-                    <Menu.Menu position='left'>
-                        <Menu.Item>
-                            <Dropdown
-                                placeholder='Select...'
-                                icon='search'
-                                search
-                                selection
-                                options={options}
-                                onChange={this.state.handleSelectChange}
-                            />
-                        </Menu.Item>
+    return (
+      <div>
+        <br />
 
-                    </Menu.Menu>
+        <Menu secondary>
+          <Menu.Menu position='left'>
+            <Menu.Item>
+              <Dropdown
+                placeholder='Select...'
+                icon='search'
+                search
+                selection
+                options={options}
+                onChange={this.state.handleSelectChange}
+              />
+            </Menu.Item>
 
-
-                    <Menu.Item name='PLN' active={activeItem === 'PLN'} onClick={this.handleItemClick} />
-                    <Menu.Item
-                        name='USD'
-                        active={activeItem === 'USD'}
-                        onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                        name='EUR'
-                        active={activeItem === 'EUR'}
-                        onClick={this.handleItemClick}
-                    />
-
-                </Menu>
-
-                <h3>{this.state.activeItem}</h3>
-                <h3>{this.state.cryptoCurrency}</h3>
+          </Menu.Menu>
 
 
-            </div>
-        )
-    }
+          <Menu.Item name='PLN' active={activeItem === 'PLN'} onClick={this.handleItemClick} />
+          <Menu.Item
+            name='USD'
+            active={activeItem === 'USD'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='EUR'
+            active={activeItem === 'EUR'}
+            onClick={this.handleItemClick}
+          />
+
+        </Menu>
+
+        <h3>{this.state.activeItem}</h3>
+        <h3>{this.state.cryptoCurrency}</h3>
+
+
+      </div>
+    )
+  }
 
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    ReactDOM.render(
-        <Table />,
-        document.getElementById('app')
-    );
+  ReactDOM.render(
+    <Table />,
+    document.getElementById('app')
+  );
 });

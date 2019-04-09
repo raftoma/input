@@ -5,42 +5,42 @@ import '../css/style.css';
 import Chart from 'react-apexcharts';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            options: {
-                chart: {
-                    id: 'apexchart-example'
-                },
-                xaxis: {
-                    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-                }
-            },
-            series: [{
-                name: 'series-1',
-                data: [30, 40, 45, 50, 49, 60, 70, 91]
-            }]
+    this.state = {
+      options: {
+        chart: {
+          id: 'apexchart-example'
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
         }
+      },
+      series: [{
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+      }]
     }
+  }
 
 
-    render(){
-        return (
-            <div>
-                <h1>Wykres Apexchart</h1>
-                <br />
-                <Chart options={this.state.options} series={this.state.series} type="bar" width={500} height={320} />
+  render(){
+    return (
+      <div>
+        <h1>Wykres Apexchart</h1>
+        <br />
+        <Chart options={this.state.options} series={this.state.series} type="bar" width={500} height={320} />
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    ReactDOM.render(
-        <App />,
-        document.getElementById('app')
-    );
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
 });

@@ -7,89 +7,89 @@ import '../css/style.css';
 import { RealTimeChartWidget } from 'react-tradingview-widgets';
 
 class Test extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeItem: 'PLN',
-            cryptoCurrency: 'BTC'
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeItem: 'PLN',
+      cryptoCurrency: 'BTC'
     }
+  }
 
-    handleItemClick = (e, { name }) => {
-        console.log("name", name)
-        this.setState({
-            activeItem: name
-        })
-    }
+  handleItemClick = (e, { name }) => {
+    console.log("name", name)
+    this.setState({
+      activeItem: name
+    })
+  }
 
-    handleSelectChange(e, value) {
-        console.log(value)
-        this.setState({
-            cryptoCurrency: value.value
-        })
-    }
+  handleSelectChange(e, value) {
+    console.log(value)
+    this.setState({
+      cryptoCurrency: value.value
+    })
+  }
 
-    render(){
-        const options = [
-            { key: 'btc', text: 'Bitcoin [BTC]', value: 'BTC' },
-            { key: 'ethereum', text: 'Ethereum [ETH]', value: 'ETH' },
-            { key: 'ripple', text: 'Ripple [XRP]', value: 'XRP' },
-        ]
+  render(){
+    const options = [
+      { key: 'btc', text: 'Bitcoin [BTC]', value: 'BTC' },
+      { key: 'ethereum', text: 'Ethereum [ETH]', value: 'ETH' },
+      { key: 'ripple', text: 'Ripple [XRP]', value: 'XRP' },
+    ]
 
-        return (
-            <div>
-                <br />
-                <Menu secondary>
-                    <Menu.Menu position='left'>
-                        <Menu.Item>
-                            <Dropdown
-                                value={this.state.cryptoCurrency}
-                                icon='search'
-                                search
-                                selection
-                                options={options}
-                                onChange={this.handleSelectChange.bind(this)}
-                            />
-                        </Menu.Item>
+    return (
+      <div>
+        <br />
+        <Menu secondary>
+          <Menu.Menu position='left'>
+            <Menu.Item>
+              <Dropdown
+                value={this.state.cryptoCurrency}
+                icon='search'
+                search
+                selection
+                options={options}
+                onChange={this.handleSelectChange.bind(this)}
+              />
+            </Menu.Item>
 
-                    </Menu.Menu>
+          </Menu.Menu>
 
 
-                    <Menu.Item
-                        name='PLN'
-                        active={this.state.activeItem === 'PLN'}
-                        onClick={this.handleItemClick} />
-                    <Menu.Item
-                        name='USD'
-                        active={this.state.activeItem === 'USD'}
-                        onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                        name='EUR'
-                        active={this.state.activeItem === 'EUR'}
-                        onClick={this.handleItemClick}
-                    />
+          <Menu.Item
+            name='PLN'
+            active={this.state.activeItem === 'PLN'}
+            onClick={this.handleItemClick} />
+          <Menu.Item
+            name='USD'
+            active={this.state.activeItem === 'USD'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='EUR'
+            active={this.state.activeItem === 'EUR'}
+            onClick={this.handleItemClick}
+          />
 
-                </Menu>
+        </Menu>
 
-                <h3>{this.state.activeItem}</h3>
-                <h3>{this.state.cryptoCurrency}</h3>
+        <h3>{this.state.activeItem}</h3>
+        <h3>{this.state.cryptoCurrency}</h3>
 
-                <RealTimeChartWidget
-                    symbol="BITFINEX:BTCUSD"
-                    locale="en"
-                    interval="D"
-                />
+        <RealTimeChartWidget
+          symbol="BITFINEX:BTCUSD"
+          locale="en"
+          interval="D"
+        />
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    ReactDOM.render(
-        <Test />,
-        document.getElementById('app')
-    );
+  ReactDOM.render(
+    <Test />,
+    document.getElementById('app')
+  );
 });
