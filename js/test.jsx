@@ -20,15 +20,29 @@ import _ from "lodash";
 
 class InputDisable extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
 
     this.state = {
       iconName: 'balance scale',
       num1: '',
       num2: '',
       num3: '',
-      color: 'black'
+      color: 'black',
+      mx: 0,
+      my: 0,
+      offset: 0
     }
+  }
+
+  handleScroll(e) {
+    console.log('scroll event');
+    console.log(e);
+    this.setState({offset: window.pageYOffset})
+  }
+
+  _onMouseMove(e) {
+    this.setState({mx: e.screenX, my: e.screenY});
   }
 
   handleChange1 = (e) => {
@@ -79,7 +93,7 @@ class InputDisable extends React.Component {
   //   console.log(this.myRef);
   // }
 
-  goToTop() {
+  goToTop = () => {
     try {
       window.scroll({top: 0, left: 0, behavior: 'smooth'});
       console.log('Went to top');
@@ -87,7 +101,6 @@ class InputDisable extends React.Component {
       window.scrollTo(0,0);
     }
   }
-
 
   componentDidMount() {
     console.log('ComponentDidMount')
@@ -104,15 +117,21 @@ class InputDisable extends React.Component {
     //             iconName: "bullseye"
     //         })
     // }, 5000)
+    window.addEventListener('scroll', this.handleScroll);
+  }
 
-
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   componentDidUpdate() {
     console.log('ComponentDidUpdate')
+
   }
 
   render() {
+
+    const {mx, my} = this.state;
 
     // function start(counter) {
     //     if (counter < 10) {
@@ -148,7 +167,8 @@ class InputDisable extends React.Component {
     ];
 
     return (
-      <div ref={this.myRef}>
+      <div onMouseMove={this._onMouseMove.bind(this)} style={{backgroundColor: '#fafafa'}} onScroll={this.fireOnScroll}>
+        <h2>Mouse coordinates: {mx} {my}</h2>
         <br/>
         <center><Icon name={this.state.iconName} size={'massive'}/></center>
 
@@ -224,6 +244,7 @@ class InputDisable extends React.Component {
         </center>
 
         <h1>{isNaN(Number(this.state.num1)) || isNaN(Number(this.state.num2)) ? 'Nie liczba' : Number(this.state.num1) * Number(this.state.num2)}</h1>
+        <h2>{this.state.offset}</h2>
         <br/>
         <Brr name={user.name} age={user.age} hobbies={user.hobbies[2]}/>
 
