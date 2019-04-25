@@ -1,0 +1,9 @@
+.reset {
+    cursor: pointer;
+    background: #940050;
+    color: #FFFFFF;
+}
+
+.reset:hover{
+    color: #000;
+}

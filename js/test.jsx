@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import {Icon, Input, Dropdown, Button} from 'semantic-ui-react';
 import '../css/style.css';
 import Brr from './Brr.jsx';
+import Counter from './counter.jsx';
 import _ from "lodash";
 // import ScrollButton from './scroll.jsx';
+// import Clock from './clock.jsx';
 
 // function Welcome(props) {
 //     return <h1>Hello, {props.name}</h1>;
@@ -24,14 +26,16 @@ class InputDisable extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
 
     this.state = {
-      iconName: 'balance scale',
+      iconName: 'chess',
       num1: '',
       num2: '',
       num3: '',
       color: 'black',
       mx: 0,
       my: 0,
-      offset: 0
+      offset: 0,
+      hidden: true,
+      count: 100
     }
   }
 
@@ -73,8 +77,11 @@ class InputDisable extends React.Component {
   handleClick = (e) => {
     console.log('Click', this.state.color)
     let color = this.state.color === 'black' ? 'red' : 'black';
+    let hidden = !this.state.hidden;
+
     this.setState({
-      color: color
+      color: color,
+      hidden: hidden
     })
   };
 
@@ -98,19 +105,27 @@ class InputDisable extends React.Component {
       window.scroll({top: 0, left: 0, behavior: 'smooth'});
       console.log('Went to top');
     } catch (error) {
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     }
+  }
+
+  changeIcon() {
+    setTimeout(() => {
+
+      this.setState({
+        iconName: "book"
+      });
+      console.log('Właśnie zmieniłem ikonkę');
+
+    }, 3000);
   }
 
   componentDidMount() {
     console.log('ComponentDidMount')
-    // console.log('Icon', this.state.iconName),
-    //     setTimeout(() => {
-    //         this.setState({
-    //             iconName: "book"
-    //         })
-    //     }, 3000)
-    //
+    // console.log('Icon', this.state.iconName)
+
+    this.changeIcon();
+
     // setTimeout(() => {
     //     console.log('Icon', this.state.iconName),
     //         this.setState({
@@ -127,6 +142,13 @@ class InputDisable extends React.Component {
   componentDidUpdate() {
     console.log('ComponentDidUpdate')
 
+  }
+
+  handleHide = () => {
+    console.log('Schowaj to')
+    this.setState({
+      hidden: true
+    })
   }
 
   render() {
@@ -168,9 +190,13 @@ class InputDisable extends React.Component {
 
     return (
       <div onMouseMove={this._onMouseMove.bind(this)} style={{backgroundColor: '#fafafa'}} onScroll={this.fireOnScroll}>
+
         <h2>Mouse coordinates: {mx} {my}</h2>
+        <h1 hidden={this.state.hidden} style={{cursor: 'pointer', background: '#e1e1e1'}} onClick={this.handleHide}>To
+          jest header do ukrycia</h1>
         <br/>
         <center><Icon name={this.state.iconName} size={'massive'}/></center>
+        <h2>Counter: <Counter/></h2>
 
         <br/>
 
@@ -392,7 +418,9 @@ class InputDisable extends React.Component {
           voluptates? Beatae, officia.</p>
         <br/>
         <center>
-          <Button onClick={ () => { this.goToTop(); }}>Go to top</Button>
+          <Button onClick={() => {
+            this.goToTop();
+          }}>Go to top</Button>
           {/*<ScrollButton onClick={ () => { this.scrollToTop(); }}>Scroll to top</ScrollButton>*/}
 
         </center>
@@ -401,7 +429,7 @@ class InputDisable extends React.Component {
       </div>
 
 
-    // scroll to top: https://codepen.io/Qbrid/pen/GjVvwL?editors=0010
+      // scroll to top: https://codepen.io/Qbrid/pen/GjVvwL?editors=0010
     )
   }
 
